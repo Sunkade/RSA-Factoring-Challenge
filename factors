@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Factor numbers"""
+
+import sys
+
+
+def open_read_file(file_name):
+    """Read from file and add to an array"""
+    with open(file_name, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+    number_to_factor = []
+    for line in lines:
+        number_to_factor.append(int(line))
+    return number_to_factor
+
+
+def find_and_times(n):
+    """Factorize each given n"""
+    for i in range(1, n):
+        if n == ((n // i) * i):
+            print("{} = {} * {}".format(n, (n // i), i))
+            break
+
+
+def fac_list(ls):
+    """Factorize each number in the list"""
+    for i in ls:
+        find_and_times(i)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        fac_list(open_read_file(sys.argv[1]))
+
